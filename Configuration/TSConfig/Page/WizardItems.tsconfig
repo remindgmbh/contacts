@@ -1,0 +1,29 @@
+mod.wizards.newContentElement.wizardItems {
+   contacts {
+      header = LLL:EXT:rmnd_contacts/Resources/Private/Language/locallang_tca.xlf:contacts
+      elements {
+         contacts_filterablelist {
+            iconIdentifier = contactsfilterablelist
+            title = LLL:EXT:rmnd_contacts/Resources/Private/Language/locallang_tca.xlf:filterableList
+            tt_content_defValues {
+               CType = contacts_filterablelist
+            }
+         }
+         contacts_selectionlist {
+            iconIdentifier = contactsselectionlist
+            title = LLL:EXT:rmnd_contacts/Resources/Private/Language/locallang_tca.xlf:selectionList
+            tt_content_defValues {
+               CType = contacts_selectionlist
+            }
+         }
+         contacts_detail {
+            iconIdentifier = contactsdetail
+            title = LLL:EXT:rmnd_contacts/Resources/Private/Language/locallang_tca.xlf:detail
+            tt_content_defValues {
+               CType = contacts_detail
+            }
+         }
+      }
+      show := addToList(contacts_detail,contacts_filterablelist,contacts_selectionlist)
+   }
+}

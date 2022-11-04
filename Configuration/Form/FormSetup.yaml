@@ -1,0 +1,16 @@
+TYPO3:
+  CMS:
+    Form:
+      prototypes:
+        standard:
+          formEditor:
+            translationFiles:
+              1669122017: "EXT:rmnd_contacts/Resources/Private/Language/locallang_form.xlf"
+          formEngine:
+            translationFiles:
+              1669122017: "EXT:rmnd_contacts/Resources/Private/Language/locallang_form.xlf"
+
+imports:
+  - { resource: "./FormElements/Form.yaml" }
+  - { resource: "./Finishers/EmailFromContact.yaml" }
+  - { resource: "./Finishers/EmailToContact.yaml" }

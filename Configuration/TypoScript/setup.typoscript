@@ -1,0 +1,123 @@
+plugin {
+    tx_contacts {
+        view {
+            templateRootPaths {
+                0 = EXT:rmnd_contacts/Resources/Private/Templates/
+                1 = {$plugin.tx_contacts.view.templateRootPath}
+            }
+            partialRootPaths {
+                0 = EXT:rmnd_contacts/Resources/Private/Partials/
+                1 = {$plugin.tx_contacts.view.partialRootPath}
+            }
+            layoutRootPaths {
+                0 = EXT:rmnd_contacts/Resources/Private/Layouts/
+                1 = {$plugin.tx_contacts.view.layoutRootPath}
+            }
+        }
+
+        settings {
+            jsonFields {
+                Remind\Contacts\Domain\Model\Contact = salutation,firstName,lastName,middleName,displayName,email,groups
+                Remind\Contacts\Domain\Model\Group = name,description
+            }
+            displayNameFields = title,firstName,middleName,lastName
+        }
+    }
+
+    tx_form.settings.yamlConfigurations {
+        1667372147 = EXT:rmnd_contacts/Configuration/Form/FormSetup.yaml
+    }
+}
+
+module {
+    tx_form.settings.yamlConfigurations {
+        1667372147 = EXT:rmnd_contacts/Configuration/Form/FormSetup.yaml
+    }
+}
+
+tt_content {
+    contacts_filterablelist =< lib.contentElementWithHeader
+    contacts_filterablelist {
+        fields {
+            content {
+                fields {
+                    data = USER
+                    data {
+                        userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+                        vendorName = Remind
+                        extensionName = Contacts
+                        pluginName = FilterableList
+                    }
+                }
+            }
+        }
+    }
+
+    contacts_selectionlist =< lib.contentElementWithHeader
+    contacts_selectionlist {
+        fields {
+            content {
+                fields {
+                    data = USER
+                    data {
+                        userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+                        vendorName = Remind
+                        extensionName = Contacts
+                        pluginName = SelectionList
+                    }
+                }
+            }
+        }
+    }
+
+    contacts_detail =< lib.contentElementWithHeader
+    contacts_detail {
+        fields {
+            content {
+                fields {
+                    data = USER
+                    data {
+                        userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+                        vendorName = Remind
+                        extensionName = Contacts
+                        pluginName = Detail
+                    }
+                }
+            }
+        }
+    }
+
+    contacts_filter =< lib.contentElementWithHeader
+    contacts_filter {
+        fields {
+            content {
+                fields {
+                    data = USER
+                    data {
+                        userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+                        vendorName = Remind
+                        extensionName = Contacts
+                        pluginName = Filter
+                    }
+                }
+            }
+        }
+    }
+
+    contacts_filterresults =< lib.contentElementWithHeader
+    contacts_filterresults {
+        fields {
+            content {
+                fields {
+                    data = USER
+                    data {
+                        userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+                        vendorName = Remind
+                        extensionName = Contacts
+                        pluginName = FilterResults
+                    }
+                }
+            }
+        }
+    }
+}

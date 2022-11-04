@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+    <file source-language="en" datatype="plaintext" original="EXT:rmnd_contacts/Resources/Private/Language/locallang_tca.xlf" product-name="rmnd_contacts">
+        <header/>
+        <body>
+            <trans-unit id="communication">
+                <source>Communication</source>
+            </trans-unit>
+            <trans-unit id="contact">
+                <source>Contact</source>
+            </trans-unit>
+            <trans-unit id="contacts">
+                <source>Contacts</source>
+            </trans-unit>
+            <trans-unit id="contactGroup">
+                <source>Contact Group</source>
+            </trans-unit>
+            <trans-unit id="contactGroups">
+                <source>Contact Groups</source>
+            </trans-unit>
+            <trans-unit id="description">
+                <source>Description</source>
+            </trans-unit>
+            <trans-unit id="detail">
+                <source>Contacts Detail View</source>
+            </trans-unit>
+            <trans-unit id="email">
+                <source>E-Mail</source>
+            </trans-unit>
+            <trans-unit id="filterableList">
+                <source>Contacts Filterable List</source>
+            </trans-unit>
+            <trans-unit id="firstName">
+                <source>First Name</source>
+            </trans-unit>
+            <trans-unit id="lastName">
+                <source>Last Name</source>
+            </trans-unit>
+            <trans-unit id="middleName">
+                <source>Middle Name</source>
+            </trans-unit>
+            <trans-unit id="mobile">
+                <source>Mobile</source>
+            </trans-unit>
+            <trans-unit id="name">
+                <source>Name</source>
+            </trans-unit>
+            <trans-unit id="phone">
+                <source>Phone</source>
+            </trans-unit>
+            <trans-unit id="salutation">
+                <source>Salutation</source>
+            </trans-unit>
+            <trans-unit id="salutation.none">
+                <source>None</source>
+            </trans-unit>
+            <trans-unit id="salutation.mr">
+                <source>Mr.</source>
+            </trans-unit>
+            <trans-unit id="salutation.mrs">
+                <source>Mrs.</source>
+            </trans-unit>
+            <trans-unit id="selectionList">
+                <source>Contacts Selection List</source>
+            </trans-unit>
+            <trans-unit id="title">
+                <source>Title</source>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>
