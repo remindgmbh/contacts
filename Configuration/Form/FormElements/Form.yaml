@@ -11,7 +11,7 @@ TYPO3:
                     selectOptions:
                       1669124521:
                         value: EmailFromContact
-                        label: form.finisher.emailFromContact
+                        label: finisher.emailFromContact
                       1669124534:
                         value: EmailToContact
                         label: finisher.emailToContact
@@ -23,7 +23,7 @@ TYPO3:
                         100:
                           identifier: header
                           templateName: Inspector-CollectionElementHeaderEditor
-                          label: form.finisher.emailFromContact
+                          label: finisher.emailFromContact
                         200:
                           identifier: subject
                           templateName: Inspector-TextEditor
