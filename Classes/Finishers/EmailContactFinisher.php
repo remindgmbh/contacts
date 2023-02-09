@@ -32,6 +32,10 @@ class EmailContactFinisher extends EmailFinisher
     {
         $contactSource = $this->parseOption('contactSource');
 
+        if (!$contactSource) {
+            throw new FinisherException('No Contact Source defined in finisher settings overrides', 1675936768);
+        }
+
         $arguments = $this->finisherContext->getFormRuntime()->getFormState()->getFormValue('arguments');
         $this->finisherContext->getFormRuntime()->getFormState()->setFormValue('arguments', null);
 
