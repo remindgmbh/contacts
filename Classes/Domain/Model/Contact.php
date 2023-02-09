@@ -39,7 +39,10 @@ class Contact extends AbstractJsonSerializableEntity
     public function getDisplayName(): string
     {
         $configurationManager = GeneralUtility::makeInstance(ConfigurationManagerInterface::class);
-        $settings = $configurationManager->getConfiguration(ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS);
+        $settings = $configurationManager->getConfiguration(
+            ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS,
+            'contacts'
+        );
         $propertyNames = $settings['displayNameFields'];
         $properties = [];
         foreach (GeneralUtility::trimExplode(',', $propertyNames, true) as $propertyName) {
