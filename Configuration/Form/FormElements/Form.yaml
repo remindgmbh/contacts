@@ -151,8 +151,6 @@ TYPO3:
                           templateName: Inspector-PropertyGridEditor
                           label: formEditor.elements.Form.finisher.EmailToSender.editor.recipients.label
                           propertyPath: options.recipients
-                          propertyValidators:
-                            10: NotEmpty
                           fieldExplanationText: formEditor.elements.Form.finisher.EmailToSender.editor.recipients.fieldExplanationText
                           isSortable: true
                           enableAddRow: true

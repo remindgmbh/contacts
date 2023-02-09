@@ -15,6 +15,18 @@ use TYPO3\CMS\Form\Domain\Finishers\Exception\FinisherException;
 
 class EmailContactFinisher extends EmailFinisher
 {
+    /**
+     * values from parent class with additional value 'recipients'
+     * @var array
+     */
+    protected $defaultOptions = [
+        'recipientName' => '',
+        'senderName' => '',
+        'addHtmlPart' => true,
+        'attachUploads' => true,
+        'recipients' => [],
+    ];
+
     private ?DataService $dataService = null;
 
     public function injectDataService(DataService $dataService): void
