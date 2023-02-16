@@ -1,6 +1,6 @@
 {
     "name": "remind/contacts",
-    "description": "Display and filter contacts",
+    "description": "REMIND - Contacts",
     "type": "typo3-cms-extension",
     "keywords": ["TYPO3", "CMS", "REMIND", "contacts"],
     "license": ["GPL-3.0-or-later"],
