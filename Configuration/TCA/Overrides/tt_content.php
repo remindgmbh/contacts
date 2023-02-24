@@ -15,7 +15,7 @@ defined('TYPO3') or die;
         'Detail',
         'LLL:EXT:rmnd_contacts/Resources/Private/Language/locallang_tca.xlf:detail',
         'contactsdetail',
-        'contacts'
+        'Contacts'
     );
     PluginUtility::addTcaType(
         'contacts_detail',
@@ -29,7 +29,7 @@ defined('TYPO3') or die;
         'FilterableList',
         'LLL:EXT:rmnd_contacts/Resources/Private/Language/locallang_tca.xlf:filterableList',
         'contactsfilterablelist',
-        'contacts'
+        'Contacts'
     );
     PluginUtility::addTcaType(
         'contacts_filterablelist',
@@ -43,7 +43,7 @@ defined('TYPO3') or die;
         'SelectionList',
         'LLL:EXT:rmnd_contacts/Resources/Private/Language/locallang_tca.xlf:selectionList',
         'contactsselectionlist',
-        'contacts'
+        'Contacts'
     );
     PluginUtility::addTcaType(
         'contacts_selectionlist',
