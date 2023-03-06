@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-    <file source-language="en" datatype="plaintext" original="EXT:rmnd_contacts/Resources/Private/Language/locallang_form.xlf" product-name="rmnd_contacts">
+    <file source-language="en" datatype="plaintext" original="EXT:rmnd_contacts/Resources/Private/Language/de.locallang_form.xlf" product-name="rmnd_contacts">
         <header/>
         <body>
             <trans-unit id="finisher.emailContact.contact">
-                <source>Contact</source>
+                <target>Kontakt</target>
             </trans-unit>
             <trans-unit id="finisher.emailContact.source">
-                <source>Contact Source</source>
+                <target>Kontakt Quelle</target>
             </trans-unit>
             <trans-unit id="finisher.emailContact.source.contact">
-                <source>Contact Detail Page</source>
+                <target>Kontakt Detail Seite</target>
             </trans-unit>
             <trans-unit id="finisher.emailContact.source.record">
-                <source>Contact Record Selection</source>
+                <target>Kontakt Datensatz Auswahl</target>
             </trans-unit>
             <trans-unit id="finisher.emailFromContact">
-                <source>E-Mail from Contact</source>
+                <target>E-Mail von Kontakt</target>
             </trans-unit>
             <trans-unit id="finisher.emailToContact">
-                <source>E-Mail to Contact</source>
+                <target>E-Mail zu Kontakt</target>
             </trans-unit>
         </body>
     </file>
