@@ -9,7 +9,7 @@ use Remind\Contacts\Domain\Model\Contact;
 use Remind\Contacts\Domain\Repository\ContactRepository;
 use Remind\Contacts\Traits\ContactAwareInterface;
 use Remind\Extbase\Service\DataService;
-use Remind\Headless\Service\JsonService;
+use Remind\Extbase\Service\JsonService;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
