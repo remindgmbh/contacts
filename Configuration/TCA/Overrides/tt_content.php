@@ -10,7 +10,7 @@ defined('TYPO3') or die;
 
 (function () {
     // Detail Plugin Configuration
-    ExtensionUtility::registerPlugin(
+    $detailSignature = ExtensionUtility::registerPlugin(
         'Contacts',
         'Detail',
         'LLL:EXT:rmnd_contacts/Resources/Private/Language/locallang_tca.xlf:detail',
@@ -18,13 +18,13 @@ defined('TYPO3') or die;
         'Contacts'
     );
     PluginUtility::addTcaType(
-        'contacts_detail',
+        $detailSignature,
         PluginType::DETAIL,
         'tx_contacts_domain_model_contact'
     );
 
     // Filterable List Plugin Configuration
-    ExtensionUtility::registerPlugin(
+    $filterableListSignature = ExtensionUtility::registerPlugin(
         'Contacts',
         'FilterableList',
         'LLL:EXT:rmnd_contacts/Resources/Private/Language/locallang_tca.xlf:filterableList',
@@ -32,13 +32,13 @@ defined('TYPO3') or die;
         'Contacts'
     );
     PluginUtility::addTcaType(
-        'contacts_filterablelist',
+        $filterableListSignature,
         PluginType::FILTERABLE_LIST,
         'tx_contacts_domain_model_contact'
     );
 
     // Selection List Plugin Configuration
-    ExtensionUtility::registerPlugin(
+    $selectionListSignature = ExtensionUtility::registerPlugin(
         'Contacts',
         'SelectionList',
         'LLL:EXT:rmnd_contacts/Resources/Private/Language/locallang_tca.xlf:selectionList',
@@ -46,7 +46,7 @@ defined('TYPO3') or die;
         'Contacts'
     );
     PluginUtility::addTcaType(
-        'contacts_selectionlist',
+        $selectionListSignature,
         PluginType::SELECTION_LIST,
         'tx_contacts_domain_model_contact'
     );
