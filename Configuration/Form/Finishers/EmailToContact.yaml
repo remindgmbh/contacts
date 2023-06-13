@@ -47,8 +47,6 @@ TYPO3:
                           - finisher.emailContact.source.record
                           - record
                       itemsProcFunc: Remind\Extbase\Backend\ItemsProc->getDetailSources
-                      itemsProcFuncParameters:
-                        extensionName: contacts
                   contactUid:
                     label: finisher.emailContact.contact
                     displayCond: FIELD:settings.finishers.EmailToContact.contactSource:=:record

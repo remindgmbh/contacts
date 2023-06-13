@@ -7,10 +7,8 @@ namespace Remind\Contacts\Controller;
 use Psr\Http\Message\ResponseInterface;
 use Remind\Contacts\Domain\Model\Contact;
 use Remind\Contacts\Domain\Repository\ContactRepository;
-use Remind\Contacts\Traits\ContactAwareInterface;
 use Remind\Extbase\Service\DataService;
 use Remind\Extbase\Service\JsonService;
-use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
 class ContactController extends ActionController
@@ -55,10 +53,7 @@ class ContactController extends ActionController
         /** @var Contact|null $contact */
         $contact = $this->dataService->getDetailEntity(
             $this->contactRepository,
-            $contact,
-            function (AbstractEntity $entity) {
-                return ($entity instanceof ContactAwareInterface) ? $entity->getContact() : null;
-            }
+            $contact
         );
         return $this->jsonResponse(json_encode(['contact' => $contact]));
     }

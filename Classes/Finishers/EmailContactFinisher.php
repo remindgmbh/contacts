@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Remind\Contacts\Finishers;
 
+use Psr\EventDispatcher\EventDispatcherInterface;
 use Remind\Contacts\Domain\Repository\ContactRepository;
-use Remind\Contacts\Traits\ContactAwareInterface;
+use Remind\Extbase\Event\ModifyDetailEntityEvent;
 use Remind\Extbase\Service\DataService;
 use TYPO3\CMS\Core\Utility\ArrayUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 use TYPO3\CMS\Form\Domain\Finishers\EmailFinisher;
 use TYPO3\CMS\Form\Domain\Finishers\Exception\FinisherException;
 
@@ -28,10 +28,16 @@ class EmailContactFinisher extends EmailFinisher
     ];
 
     private ?DataService $dataService = null;
+    private ?EventDispatcherInterface $eventDispatcher = null;
 
     public function injectDataService(DataService $dataService): void
     {
         $this->dataService = $dataService;
+    }
+
+    public function injectEventDispatcher(EventDispatcherInterface $eventDispatcher): void
+    {
+        $this->eventDispatcher = $eventDispatcher;
     }
 
     /**
@@ -69,14 +75,11 @@ class EmailContactFinisher extends EmailFinisher
                 }
                 break;
             default:
-                $contact = $this->dataService->getDetailEntityBySource(
-                    'contacts',
-                    $contactSource,
-                    $arguments,
-                    function (AbstractEntity $entity) {
-                        return ($entity instanceof ContactAwareInterface) ? $entity->getContact() : null;
-                    }
+                /** @var ModifyDetailEntityEvent $event */
+                $event = $this->eventDispatcher->dispatch(
+                    new ModifyDetailEntityEvent('Contacts', $contactSource, $arguments)
                 );
+                $contact = $event->getResult();
                 break;
         }
 
