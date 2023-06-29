@@ -63,6 +63,9 @@
             <trans-unit id="selectionList">
                 <target>Kontakte Auswahl Liste</target>
             </trans-unit>
+            <trans-unit id="slug">
+                <target>Slug</target>
+            </trans-unit>
             <trans-unit id="title">
                 <target>Titel</target>
             </trans-unit>

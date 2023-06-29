@@ -15,5 +15,6 @@ CREATE TABLE tx_contacts_domain_model_contact (
 CREATE TABLE tx_contacts_domain_model_group (
     name varchar(255),
     description text,
+    slug varchar(255),
     contacts int(11) unsigned,
 );

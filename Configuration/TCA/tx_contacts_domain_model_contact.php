@@ -113,6 +113,24 @@ return [
                 'max' => 256,
             ],
         ],
+        'slug' => [
+            'label' => 'LLL:EXT:rmnd_contacts/Resources/Private/Language/locallang_tca.xlf:slug',
+            'exclude' => 0,
+            'config' => [
+                'type' => 'slug',
+                'generatorOptions' => [
+                    'fields' => ['first_name', 'last_name'],
+                    'fieldSeparator' => '-',
+                    'prefixParentPageSlug' => false,
+                    'replacements' => [
+                        '/' => '-',
+                    ],
+                ],
+                'fallbackCharacter' => '-',
+                'eval' => 'uniqueInSite',
+                'default' => '',
+            ],
+        ],
         'groups' => [
             'exclude' => 0,
             'label' => 'LLL:EXT:rmnd_contacts/Resources/Private/Language/locallang_tca.xlf:contactGroups',
@@ -215,6 +233,7 @@ return [
             'showitem' => '
                 --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:general,
                     --palette--;;name,
+                    slug,
                     groups,
                 --div--;LLL:EXT:rmnd_contacts/Resources/Private/Language/locallang_tca.xlf:communication,
                     --palette--;;communication,

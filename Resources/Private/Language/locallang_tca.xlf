@@ -63,6 +63,9 @@
             <trans-unit id="selectionList">
                 <source>Contacts Selection List</source>
             </trans-unit>
+            <trans-unit id="slug">
+                <source>Slug</source>
+            </trans-unit>
             <trans-unit id="title">
                 <source>Title</source>
             </trans-unit>
