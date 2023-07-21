@@ -7,6 +7,7 @@ namespace Remind\Contacts\Domain\Model;
 use Remind\Extbase\Domain\Model\AbstractJsonSerializableEntity;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
+use TYPO3\CMS\Extbase\Domain\Model\FileReference;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
 class Contact extends AbstractJsonSerializableEntity
@@ -30,11 +31,18 @@ class Contact extends AbstractJsonSerializableEntity
     protected string $address = '';
 
     protected string $slug = '';
+    
+    protected string $position = '';
 
     /**
      * @var ObjectStorage<Group> $groups
      */
     protected ObjectStorage $groups;
+    
+    /**
+     * @var FileReference|null
+     */
+    protected ?FileReference $image = null;
 
     public function getDisplayName(): string
     {
@@ -200,4 +208,39 @@ class Contact extends AbstractJsonSerializableEntity
 
         return $this;
     }
+    
+    /**
+     * @return FileReference|null
+     */
+    public function getImage(): ?FileReference
+    {
+        return $this->image;
+    }
+    
+    /**
+     * @param FileReference $image
+     */
+    public function setImage(FileReference $image): self
+    {
+        $this->image = $image;
+        
+        return $this;
+    }
+    
+    /**
+     * @return string
+     */
+    public function getPosition(): string
+    {
+        return $this->position;
+    }
+
+    public function setPosition(string $position): self
+    {
+        $this->position = $position;
+
+        return $this;
+    }
+    
+    
 }

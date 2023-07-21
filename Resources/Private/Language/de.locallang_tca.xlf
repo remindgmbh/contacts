@@ -69,6 +69,12 @@
             <trans-unit id="title">
                 <target>Titel</target>
             </trans-unit>
+            <trans-unit id="image">
+                <target>Bild</target>
+            </trans-unit>
+            <trans-unit id="position">
+                <target>Position</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

@@ -30,7 +30,7 @@ class ContactController extends ActionController
             'detail',
             'contact'
         );
-
+        
         return $this->jsonResponse(json_encode($jsonResult));
     }
 
@@ -50,11 +50,10 @@ class ContactController extends ActionController
 
     public function detailAction(?Contact $contact = null): ResponseInterface
     {
-        /** @var Contact|null $contact */
-        $contact = $this->dataService->getDetailEntity(
+        $contactResult = $this->dataService->getDetailResult(
             $this->contactRepository,
             $contact
         );
-        return $this->jsonResponse(json_encode(['contact' => $contact]));
+        return $this->jsonResponse(json_encode($contactResult));
     }
 }

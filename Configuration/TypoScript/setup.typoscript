@@ -2,10 +2,10 @@ plugin {
     tx_contacts {
         settings {
             jsonFields {
-                Remind\Contacts\Domain\Model\Contact = salutation,firstName,lastName,middleName,displayName,email,groups
+                Remind\Contacts\Domain\Model\Contact = salutation,firstName,lastName,middleName,displayName,email,groups,image,title,position,phone,mobile
                 Remind\Contacts\Domain\Model\Group = name,description
             }
-            displayNameFields = title,firstName,middleName,lastName
+            displayNameFields = firstName,middleName,lastName
         }
     }
 

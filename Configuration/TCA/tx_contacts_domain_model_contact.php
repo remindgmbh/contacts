@@ -143,6 +143,23 @@ return [
                 'multiple' => 0,
             ],
         ],
+        'image' => [
+            'label' => 'LLL:EXT:rmnd_contacts/Resources/Private/Language/locallang_tca.xlf:image',
+            'config' => [
+                'type' => 'file',
+                'allowed' => 'common-image-types',
+            ],
+        ],
+        'position' => [
+            'label' => 'LLL:EXT:rmnd_contacts/Resources/Private/Language/locallang_tca.xlf:position',
+            'config' => [
+                'type' => 'input',
+                'size' => 30,
+                'eval' => 'trim',
+                'required' => false,
+                'max' => 256,
+            ],
+        ],
         'sys_language_uid' => [
             'exclude' => true,
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.language',
@@ -233,8 +250,10 @@ return [
             'showitem' => '
                 --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:general,
                     --palette--;;name,
+                    position,
                     slug,
                     groups,
+                    image,
                 --div--;LLL:EXT:rmnd_contacts/Resources/Private/Language/locallang_tca.xlf:communication,
                     --palette--;;communication,
                 --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:language,
