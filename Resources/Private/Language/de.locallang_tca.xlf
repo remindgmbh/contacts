@@ -45,6 +45,12 @@
             <trans-unit id="name">
                 <target>Name</target>
             </trans-unit>
+            <trans-unit id="order">
+                <target>Reihenfolge</target>
+            </trans-unit>
+            <trans-unit id="vcard">
+                <target>Visitenkarte</target>
+            </trans-unit>
             <trans-unit id="phone">
                 <target>Telefonnummer</target>
             </trans-unit>

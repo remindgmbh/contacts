@@ -2,7 +2,7 @@ plugin {
     tx_contacts {
         settings {
             jsonFields {
-                Remind\Contacts\Domain\Model\Contact = salutation,firstName,lastName,middleName,displayName,email,groups,image,title,position,phone,mobile
+                Remind\Contacts\Domain\Model\Contact = salutation,firstName,lastName,middleName,displayName,email,groups,image,vcard,title,position,order,phone,mobile
                 Remind\Contacts\Domain\Model\Group = name,description
             }
             displayNameFields = firstName,middleName,lastName
@@ -32,6 +32,15 @@ tt_content {
                         vendorName = Remind
                         extensionName = Contacts
                         pluginName = FilterableList
+                    },
+                    settings {
+                        dataProcessing {
+                            10 = Remind\Headless\DataProcessing\FlexFormProcessor
+                            10 {
+                                fieldName = pi_flexform
+                                as = flexform
+                            }
+                        }
                     }
                 }
             }

@@ -45,6 +45,12 @@
             <trans-unit id="name">
                 <source>Name</source>
             </trans-unit>
+            <trans-unit id="order">
+                <source>Order</source>
+            </trans-unit>
+            <trans-unit id="vcard">
+                <source>Business Card</source>
+            </trans-unit>
             <trans-unit id="phone">
                 <source>Phone</source>
             </trans-unit>

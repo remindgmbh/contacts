@@ -31,18 +31,22 @@ class Contact extends AbstractJsonSerializableEntity
     protected string $address = '';
 
     protected string $slug = '';
-    
+
     protected string $position = '';
+
+    protected int $order = 0;
 
     /**
      * @var ObjectStorage<Group> $groups
      */
     protected ObjectStorage $groups;
-    
+
     /**
      * @var FileReference|null
      */
     protected ?FileReference $image = null;
+
+    protected ?FileReference $vcard = null;
 
     public function getDisplayName(): string
     {
@@ -208,7 +212,7 @@ class Contact extends AbstractJsonSerializableEntity
 
         return $this;
     }
-    
+
     /**
      * @return FileReference|null
      */
@@ -216,17 +220,17 @@ class Contact extends AbstractJsonSerializableEntity
     {
         return $this->image;
     }
-    
+
     /**
      * @param FileReference $image
      */
     public function setImage(FileReference $image): self
     {
         $this->image = $image;
-        
+
         return $this;
     }
-    
+
     /**
      * @return string
      */
@@ -241,6 +245,40 @@ class Contact extends AbstractJsonSerializableEntity
 
         return $this;
     }
-    
-    
+
+    /**
+     * @return int
+     */
+    public function getOrder(): int
+    {
+        return $this->order;
+    }
+
+    public function setOrder(int $order): self
+    {
+        $this->order = $order;
+
+        return $this;
+    }
+
+    /**
+     * @return FileReference|null
+     */
+    public function getVcard(): ?FileReference
+    {
+        return $this->vcard;
+    }
+
+    /**
+     * @param FileReference $vcard
+     */
+    public function setVcard(FileReference $vcard): self
+    {
+        $this->vcard = $vcard;
+
+        return $this;
+    }
+
+
+
 }
