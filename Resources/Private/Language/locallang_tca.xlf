@@ -6,6 +6,9 @@
             <trans-unit id="communication">
                 <source>Communication</source>
             </trans-unit>
+            <trans-unit id="company">
+                <source>Company</source>
+            </trans-unit>
             <trans-unit id="contact">
                 <source>Contact</source>
             </trans-unit>

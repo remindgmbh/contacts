@@ -6,6 +6,9 @@
             <trans-unit id="communication">
                 <target>Kommunikation</target>
             </trans-unit>
+            <trans-unit id="company">
+                <target>Firma</target>
+            </trans-unit>
             <trans-unit id="contact">
                 <target>Kontakt</target>
             </trans-unit>

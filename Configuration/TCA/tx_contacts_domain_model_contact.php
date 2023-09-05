@@ -244,18 +244,25 @@ return [
                 mobile,
             ',
         ],
+        'company' => [
+            'showitem' => '
+                position,
+            ',
+        ],
     ],
     'types' => [
         0 => [
             'showitem' => '
                 --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:general,
                     --palette--;;name,
-                    position,
                     slug,
                     groups,
-                    image,
                 --div--;LLL:EXT:rmnd_contacts/Resources/Private/Language/locallang_tca.xlf:communication,
                     --palette--;;communication,
+                --div--;LLL:EXT:rmnd_contacts/Resources/Private/Language/locallang_tca.xlf:company,
+                    --palette--;;company,
+                --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.images,
+                    image,
                 --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:language,
                     sys_language_uid,
                     l10n_parent,
