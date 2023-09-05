@@ -160,13 +160,6 @@ return [
                 'max' => 256,
             ],
         ],
-        'vcard' => [
-            'label' => 'LLL:EXT:rmnd_contacts/Resources/Private/Language/locallang_tca.xlf:vcard',
-            'config' => [
-                'type' => 'file',
-                'allowed' => ['vcf'],
-            ],
-        ],
         'sys_language_uid' => [
             'exclude' => true,
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.language',
@@ -261,7 +254,6 @@ return [
                     slug,
                     groups,
                     image,
-                    vcard,
                 --div--;LLL:EXT:rmnd_contacts/Resources/Private/Language/locallang_tca.xlf:communication,
                     --palette--;;communication,
                 --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:language,

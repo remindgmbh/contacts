@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Remind\Contacts\Domain\Model;
 
 use Remind\Extbase\Domain\Model\AbstractJsonSerializableEntity;
+use Sabre\VObject\Component\VCard;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 use TYPO3\CMS\Extbase\Domain\Model\FileReference;
@@ -44,8 +45,6 @@ class Contact extends AbstractJsonSerializableEntity
      */
     protected ?FileReference $image = null;
 
-    protected ?FileReference $vcard = null;
-
     public function getDisplayName(): string
     {
         $configurationManager = GeneralUtility::makeInstance(ConfigurationManagerInterface::class);
@@ -61,6 +60,24 @@ class Contact extends AbstractJsonSerializableEntity
             }
         }
         return implode(' ', array_filter($properties));
+    }
+
+    public function getVCard(): VCard
+    {
+        return new VCard([
+            'VERSION' => VCard::VCARD40,
+            'EMAIL' => $this->email,
+            'N' => implode(
+                ';',
+                [
+                    $this->lastName,
+                    $this->firstName,
+                    $this->middleName,
+                    $this->title,
+                ],
+            ),
+            'TITLE' => $this->position,
+        ]);
     }
 
     public function getFirstName(): string
@@ -240,24 +257,6 @@ class Contact extends AbstractJsonSerializableEntity
     public function setPosition(string $position): self
     {
         $this->position = $position;
-
-        return $this;
-    }
-
-    /**
-     * @return FileReference|null
-     */
-    public function getVcard(): ?FileReference
-    {
-        return $this->vcard;
-    }
-
-    /**
-     * @param FileReference $vcard
-     */
-    public function setVcard(FileReference $vcard): self
-    {
-        $this->vcard = $vcard;
 
         return $this;
     }
