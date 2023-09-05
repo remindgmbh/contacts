@@ -12,7 +12,6 @@ CREATE TABLE tx_contacts_domain_model_contact (
     groups int(11) unsigned,
     image int(11) unsigned DEFAULT '0' NOT NULL,
     position varchar(255),
-    order int(11),
     vcard int(11) unsigned DEFAULT '0' NOT NULL,
 );
 

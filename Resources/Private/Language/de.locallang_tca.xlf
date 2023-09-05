@@ -33,6 +33,9 @@
             <trans-unit id="firstName">
                 <target>Vorname</target>
             </trans-unit>
+            <trans-unit id="image">
+                <target>Bild</target>
+            </trans-unit>
             <trans-unit id="lastName">
                 <target>Nachname</target>
             </trans-unit>
@@ -45,14 +48,11 @@
             <trans-unit id="name">
                 <target>Name</target>
             </trans-unit>
-            <trans-unit id="order">
-                <target>Reihenfolge</target>
-            </trans-unit>
-            <trans-unit id="vcard">
-                <target>Visitenkarte</target>
-            </trans-unit>
             <trans-unit id="phone">
                 <target>Telefonnummer</target>
+            </trans-unit>
+            <trans-unit id="position">
+                <target>Position</target>
             </trans-unit>
             <trans-unit id="salutation">
                 <target>Anrede</target>
@@ -75,11 +75,8 @@
             <trans-unit id="title">
                 <target>Titel</target>
             </trans-unit>
-            <trans-unit id="image">
-                <target>Bild</target>
-            </trans-unit>
-            <trans-unit id="position">
-                <target>Position</target>
+            <trans-unit id="vcard">
+                <target>Visitenkarte</target>
             </trans-unit>
         </body>
     </file>

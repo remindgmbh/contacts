@@ -34,8 +34,6 @@ class Contact extends AbstractJsonSerializableEntity
 
     protected string $position = '';
 
-    protected int $order = 0;
-
     /**
      * @var ObjectStorage<Group> $groups
      */
@@ -247,21 +245,6 @@ class Contact extends AbstractJsonSerializableEntity
     }
 
     /**
-     * @return int
-     */
-    public function getOrder(): int
-    {
-        return $this->order;
-    }
-
-    public function setOrder(int $order): self
-    {
-        $this->order = $order;
-
-        return $this;
-    }
-
-    /**
      * @return FileReference|null
      */
     public function getVcard(): ?FileReference
@@ -278,7 +261,4 @@ class Contact extends AbstractJsonSerializableEntity
 
         return $this;
     }
-
-
-
 }

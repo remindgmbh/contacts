@@ -160,16 +160,6 @@ return [
                 'max' => 256,
             ],
         ],
-        'order' => [
-            'label' => 'LLL:EXT:rmnd_contacts/Resources/Private/Language/locallang_tca.xlf:order',
-            'config' => [
-                'type' => 'input',
-                'size' => 30,
-                'eval' => 'trim',
-                'required' => false,
-                'max' => 11,
-            ],
-        ],
         'vcard' => [
             'label' => 'LLL:EXT:rmnd_contacts/Resources/Private/Language/locallang_tca.xlf:vcard',
             'config' => [
@@ -268,7 +258,6 @@ return [
                 --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:general,
                     --palette--;;name,
                     position,
-                    order,
                     slug,
                     groups,
                     image,

@@ -33,6 +33,9 @@
             <trans-unit id="firstName">
                 <source>First Name</source>
             </trans-unit>
+            <trans-unit id="image">
+                <source>Image</source>
+            </trans-unit>
             <trans-unit id="lastName">
                 <source>Last Name</source>
             </trans-unit>
@@ -45,14 +48,11 @@
             <trans-unit id="name">
                 <source>Name</source>
             </trans-unit>
-            <trans-unit id="order">
-                <source>Order</source>
-            </trans-unit>
-            <trans-unit id="vcard">
-                <source>Business Card</source>
-            </trans-unit>
             <trans-unit id="phone">
                 <source>Phone</source>
+            </trans-unit>
+            <trans-unit id="position">
+                <source>Position</source>
             </trans-unit>
             <trans-unit id="salutation">
                 <source>Salutation</source>
@@ -75,11 +75,8 @@
             <trans-unit id="title">
                 <source>Title</source>
             </trans-unit>
-            <trans-unit id="image">
-                <source>Image</source>
-            </trans-unit>
-            <trans-unit id="position">
-                <source>Position</source>
+            <trans-unit id="vcard">
+                <source>Business Card</source>
             </trans-unit>
         </body>
     </file>
