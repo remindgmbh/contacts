@@ -43,7 +43,8 @@ class VCardMiddleware implements MiddlewareInterface
             if ($contact) {
                 $response = $this->responseFactory
                     ->createResponse()
-                    ->withHeader('Content-Type', 'text/vcard');
+                    ->withHeader('Content-Type', 'text/vcard')
+                    ->withHeader('Content-Disposition', 'attachment;filename="' . $contact->getEmail() . '"');
     
                 $response->getBody()->write($contact->getVCard()->serialize());
                 return $response;
