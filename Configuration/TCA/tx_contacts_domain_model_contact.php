@@ -148,6 +148,7 @@ return [
             'config' => [
                 'type' => 'file',
                 'allowed' => 'common-image-types',
+                'maxitems' => 1,
             ],
         ],
         'position' => [
