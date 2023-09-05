@@ -36,7 +36,6 @@ return [
                 'type' => 'text',
                 'eval' => 'trim',
                 'enableRichtext' => true,
-                'required' => true,
                 'max' => 256,
             ],
         ],
