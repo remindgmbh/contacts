@@ -1,8 +1,28 @@
+vcard = PAGE
+vcard {
+    typeNum = {$plugin.tx_contacts.vcard.typeNum}
+    config {
+        no_cache = 0
+        sendCacheHeaders = 1
+        debug = 0
+        admPanel = 0
+        disableAllHeaderCode = 1
+    }
+
+    10 = USER_INT
+    10 {
+        userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+        vendorName = Remind
+        extensionName = Contacts
+        pluginName = VCard
+    }
+}
+
 plugin {
     tx_contacts {
         settings {
             jsonFields {
-                Remind\Contacts\Domain\Model\Contact = salutation,firstName,lastName,middleName,displayName,email,groups,image,title,position,phone,mobile
+                Remind\Contacts\Domain\Model\Contact = salutation,firstName,lastName,middleName,displayName,email,groups,image,title,position,phone,mobile,vCardLink
                 Remind\Contacts\Domain\Model\Group = name,description
             }
             displayNameFields = firstName,middleName,lastName

@@ -44,6 +44,14 @@ defined('TYPO3') || die('Access denied.');
         ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT
     );
 
+    ExtensionUtility::configurePlugin(
+        'Contacts',
+        'VCard',
+        [ContactController::class => 'vCard'],
+        [],
+        ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT
+    );
+
     $GLOBALS
         ['TYPO3_CONF_VARS']
         ['SC_OPTIONS']

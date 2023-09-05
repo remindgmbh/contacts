@@ -56,4 +56,15 @@ class ContactController extends ActionController
         );
         return $this->jsonResponse(json_encode($contactResult));
     }
+
+    public function vCardAction(?Contact $contact = null): ResponseInterface
+    {
+        $response = $this->responseFactory
+            ->createResponse()
+            ->withHeader('Content-Type', 'text/vcard')
+            ->withHeader('Content-Disposition', 'attachment;filename="' . $contact->getEmail() . '"');
+
+        $response->getBody()->write($contact->getVCard()->serialize());
+        return $response;
+    }
 }

@@ -4,11 +4,13 @@ declare(strict_types=1);
 
 namespace Remind\Contacts\Domain\Model;
 
+use Psr\Http\Message\ServerRequestInterface;
 use Remind\Extbase\Domain\Model\AbstractJsonSerializableEntity;
 use Sabre\VObject\Component\VCard;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 use TYPO3\CMS\Extbase\Domain\Model\FileReference;
+use TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
 class Contact extends AbstractJsonSerializableEntity
@@ -60,6 +62,24 @@ class Contact extends AbstractJsonSerializableEntity
             }
         }
         return implode(' ', array_filter($properties));
+    }
+
+    public function getVCardLink(): string
+    {
+        $request = $this->getRequest();
+        /** @var \TYPO3\CMS\Core\TypoScript\FrontendTypoScript $frontendTyposcript */
+        $frontendTyposcript = $request->getAttribute('frontend.typoscript');
+        $constants = $frontendTyposcript->getFlatSettings();
+
+        $pageType = (int) $constants['plugin.tx_contacts.vcard.typeNum'];
+
+        $uriBuilder = GeneralUtility::makeInstance(UriBuilder::class);
+        $uri = $uriBuilder
+            ->reset()
+            ->setTargetPageType($pageType)
+            ->setArguments(['tx_contacts_vcard[contact]' => $this->uid])
+            ->build();
+        return $uri;
     }
 
     public function getVCard(): VCard
@@ -259,5 +279,10 @@ class Contact extends AbstractJsonSerializableEntity
         $this->position = $position;
 
         return $this;
+    }
+
+    private function getRequest(): ServerRequestInterface
+    {
+        return $GLOBALS['TYPO3_REQUEST'];
     }
 }
