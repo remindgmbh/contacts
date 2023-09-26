@@ -7,7 +7,7 @@ namespace Remind\Contacts\Controller;
 use Psr\Http\Message\ResponseInterface;
 use Remind\Contacts\Domain\Model\Contact;
 use Remind\Contacts\Domain\Repository\ContactRepository;
-use Remind\Extbase\Service\DataService;
+use Remind\Extbase\Service\ControllerService;
 use Remind\Extbase\Service\JsonService;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
@@ -15,14 +15,14 @@ class ContactController extends ActionController
 {
     public function __construct(
         private readonly ContactRepository $contactRepository,
-        private readonly DataService $dataService,
+        private readonly ControllerService $controllerService,
         private readonly JsonService $jsonService,
     ) {
     }
 
     public function filterableListAction(?int $page = 1, ?array $filter = []): ResponseInterface
     {
-        $listResult = $this->dataService->getFilterableList($this->contactRepository, $page, $filter, 'filter');
+        $listResult = $this->controllerService->getFilterableList($this->contactRepository, $page, $filter, 'filter');
 
         $jsonResult = $this->jsonService->serializeFilterableList(
             $listResult,
@@ -36,7 +36,7 @@ class ContactController extends ActionController
 
     public function selectionListAction(?int $page = 1): ResponseInterface
     {
-        $selectionResult = $this->dataService->getSelectionList($this->contactRepository, $page);
+        $selectionResult = $this->controllerService->getSelectionList($this->contactRepository, $page);
 
         $jsonResult = $this->jsonService->serializeList(
             $selectionResult,
@@ -50,7 +50,7 @@ class ContactController extends ActionController
 
     public function detailAction(?Contact $contact = null): ResponseInterface
     {
-        $contactResult = $this->dataService->getDetailResult(
+        $contactResult = $this->controllerService->getDetailResult(
             $this->contactRepository,
             $contact
         );

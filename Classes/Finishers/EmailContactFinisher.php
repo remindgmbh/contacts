@@ -7,7 +7,6 @@ namespace Remind\Contacts\Finishers;
 use Psr\EventDispatcher\EventDispatcherInterface;
 use Remind\Contacts\Domain\Repository\ContactRepository;
 use Remind\Extbase\Event\ModifyDetailEntityEvent;
-use Remind\Extbase\Service\DataService;
 use TYPO3\CMS\Core\Utility\ArrayUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Form\Domain\Finishers\EmailFinisher;
@@ -27,13 +26,7 @@ class EmailContactFinisher extends EmailFinisher
         'recipients' => [],
     ];
 
-    private ?DataService $dataService = null;
     private ?EventDispatcherInterface $eventDispatcher = null;
-
-    public function injectDataService(DataService $dataService): void
-    {
-        $this->dataService = $dataService;
-    }
 
     public function injectEventDispatcher(EventDispatcherInterface $eventDispatcher): void
     {
