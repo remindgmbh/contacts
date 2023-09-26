@@ -93,6 +93,7 @@ class Contact extends AbstractJsonSerializableEntity
                 $this->middleName,
                 $this->title,
             ],
+            'PHOTO' => $this->image?->getOriginalResource()?->getContents(),
             'TEL;TYPE=CELL' => $this->mobile,
             'TEL;TYPE=WORK' => $this->phone,
             'TITLE' => $this->position,
