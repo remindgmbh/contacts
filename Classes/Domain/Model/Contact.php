@@ -86,16 +86,15 @@ class Contact extends AbstractJsonSerializableEntity
     {
         return new VCard([
             'VERSION' => VCard::VCARD40,
-            'EMAIL' => $this->email,
-            'N' => implode(
-                ';',
-                [
-                    $this->lastName,
-                    $this->firstName,
-                    $this->middleName,
-                    $this->title,
-                ],
-            ),
+            'EMAIL;TYPE=WORK' => $this->email,
+            'N' => [
+                $this->lastName,
+                $this->firstName,
+                $this->middleName,
+                $this->title,
+            ],
+            'TEL;TYPE=CELL' => $this->mobile,
+            'TEL;TYPE=WORK' => $this->phone,
             'TITLE' => $this->position,
         ]);
     }
