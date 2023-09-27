@@ -84,20 +84,29 @@ class Contact extends AbstractJsonSerializableEntity
 
     public function getVCard(): VCard
     {
-        return new VCard([
-            'VERSION' => VCard::VCARD40,
-            'EMAIL;TYPE=WORK' => $this->email,
-            'N' => [
+        $vCard = new VCard([
+            'VERSION' => '4.0',
+        ]);
+        $vCard->add(
+            'PHOTO',
+            base64_encode($this->image?->getOriginalResource()?->getContents()),
+            ['ENCODING' => 'BASE64', 'VALUE' => 'TEXT']
+        );
+        $vCard->add(
+            'N',
+            [
                 $this->lastName,
                 $this->firstName,
                 $this->middleName,
                 $this->title,
             ],
-            'PHOTO' => $this->image?->getOriginalResource()?->getContents(),
-            'TEL;TYPE=CELL' => $this->mobile,
-            'TEL;TYPE=WORK' => $this->phone,
-            'TITLE' => $this->position,
-        ]);
+            ['CHARSET' => 'ISO-8859-1']
+        );
+        $vCard->add('EMAIL', $this->email, ['TYPE' => 'WORK']);
+        $vCard->add('TEL', $this->mobile, ['TYPE' => 'CELL']);
+        $vCard->add('TEL', $this->phone, ['TYPE' => 'WORK']);
+        $vCard->add('TITLE', $this->position, ['CHARSET' => 'ISO-8859-1']);
+        return $vCard;
     }
 
     public function getFirstName(): string

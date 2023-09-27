@@ -62,9 +62,9 @@ class ContactController extends ActionController
         $response = $this->responseFactory
             ->createResponse()
             ->withHeader('Content-Type', 'text/vcard')
-            ->withHeader('Content-Disposition', 'attachment;filename="' . $contact->getEmail() . '"');
+            ->withHeader('Content-Disposition', 'attachment;filename="' . $contact->getEmail() . '.vcf"');
 
-        $response->getBody()->write($contact->getVCard()->serialize());
+        $response->getBody()->write(mb_convert_encoding($contact->getVCard()->serialize(), 'ISO-8859-1'));
         return $response;
     }
 }
