@@ -84,14 +84,17 @@ class Contact extends AbstractJsonSerializableEntity
 
     public function getVCard(): VCard
     {
+        $photo = $this->image?->getOriginalResource()?->getContents();
         $vCard = new VCard([
             'VERSION' => '4.0',
         ]);
-        $vCard->add(
-            'PHOTO',
-            base64_encode($this->image?->getOriginalResource()?->getContents()),
-            ['ENCODING' => 'BASE64', 'VALUE' => 'TEXT']
-        );
+        if ($photo) {
+            $vCard->add(
+                'PHOTO',
+                base64_encode($photo),
+                ['ENCODING' => 'BASE64', 'VALUE' => 'TEXT']
+            );
+        }
         $vCard->add(
             'N',
             [
