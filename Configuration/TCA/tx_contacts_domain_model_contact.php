@@ -134,10 +134,13 @@ return [
         'groups' => [
             'exclude' => 0,
             'label' => 'LLL:EXT:rmnd_contacts/Resources/Private/Language/locallang_tca.xlf:contactGroups',
+            'l10n_mode' => 'exclude',
+            'l10n_display' => 'defaultAsReadonly',
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectMultipleSideBySide',
                 'foreign_table' => 'tx_contacts_domain_model_group',
+                'foreign_table_where' => 'AND {#tx_contacts_domain_model_group}.{#sys_language_uid} IN (-1,0)',
                 'MM' => 'tx_contacts_domain_model_contact_group_mm',
                 'size' => 5,
                 'multiple' => 0,

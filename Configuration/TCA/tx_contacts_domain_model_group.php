@@ -43,13 +43,7 @@ return [
             'exclude' => 0,
             'label' => 'LLL:EXT:rmnd_contacts/Resources/Private/Language/locallang_tca.xlf:contacts',
             'config' => [
-                'type' => 'select',
-                'renderType' => 'selectMultipleSideBySide',
-                'foreign_table' => 'tx_contacts_domain_model_contact',
-                'MM' => 'tx_contacts_domain_model_contact_group_mm',
-                'MM_opposite_field' => 'contacts',
-                'size' => 5,
-                'multiple' => 0,
+                'type' => 'passthrough',
             ],
         ],
         'slug' => [
