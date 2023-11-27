@@ -30,7 +30,7 @@ class ContactController extends ActionController
             'detail',
             'contact'
         );
-        
+
         return $this->jsonResponse(json_encode($jsonResult));
     }
 
