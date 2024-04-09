@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+    <file source-language="en" datatype="plaintext" original="EXT:rmnd_contacts/Resources/Private/Language/de.locallang_flex.xlf" product-name="rmnd_contacts">
+        <header/>
+        <body>
+            <trans-unit id="config.sheet_title">
+                <target>Konakte</target>
+            </trans-unit>
+            <trans-unit id="config.detail_page">
+                <target>Detail Seite</target>
+            </trans-unit>
+            <trans-unit id="config.detail_page.description">
+                <target>Wird für Suche benutzt</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>
