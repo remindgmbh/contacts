@@ -1,3 +1,5 @@
+@import 'EXT:rmnd_contacts/Configuration/TypoScript/Extensions/*.typoscript'
+
 vcard = PAGE
 vcard {
     typeNum = {$plugin.tx_contacts.vcard.typeNum}

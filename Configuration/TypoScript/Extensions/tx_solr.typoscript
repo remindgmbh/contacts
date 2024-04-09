@@ -1,0 +1,58 @@
+plugin.tx_solr.index.queue {
+    contacts = 1
+    contacts {
+        table = tx_contacts_domain_model_contact
+
+        fields {
+            title = COA
+            title {
+                stdWrap.trim = 1
+                10 = TEXT
+                10 {
+                    field = first_name
+                    required = 1
+                    noTrimWrap = || |
+                }
+                20 = TEXT
+                20 {
+                    field = middle_name
+                    required = 1
+                    noTrimWrap = || |
+                }
+                30 = TEXT
+                30 {
+                    field = last_name
+                    required = 1
+                    noTrimWrap = || |
+                }
+            }
+
+            content = COA
+            content {
+                stdWrap.trim = 1
+                10 = TEXT
+                10 {
+                    field = position
+                    required = 1
+                    noTrimWrap = || |
+                }
+            }
+
+            title_stringS = title
+            firstName_stringS = first_name
+            middleName_stringS = middle_name
+            lastName_stringS = last_name
+            salutation_intS = salutation
+            position_stringS = position
+            email_stringS = email
+            phone_stringS = phone
+            mobile_stringS = mobile
+
+            image_intS = SOLR_RELATION
+            image_intS {
+                localField = image
+                foreignLabelField = uid
+            }
+        }
+    }
+}
