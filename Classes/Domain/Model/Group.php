@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Remind\Contacts\Domain\Model;
 
-use Remind\Extbase\Domain\Model\AbstractJsonSerializableEntity;
+use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
-class Group extends AbstractJsonSerializableEntity
+class Group extends AbstractEntity
 {
     protected string $name = '';
 
@@ -42,12 +42,12 @@ class Group extends AbstractJsonSerializableEntity
         return $this;
     }
 
-    public function addContact(Contact $contact)
+    public function addContact(Contact $contact): void
     {
         $this->contacts->attach($contact);
     }
 
-    public function removeContact(Contact $contact)
+    public function removeContact(Contact $contact): void
     {
         $this->contacts->detach($contact);
     }

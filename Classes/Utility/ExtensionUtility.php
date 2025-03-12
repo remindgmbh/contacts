@@ -17,19 +17,19 @@ class ExtensionUtility
         $fieldName = 'contact';
         ExtensionManagementUtility::addTCAcolumns($table, [
             $fieldName => [
-                'exclude' => false,
-                'label' => 'LLL:EXT:rmnd_contacts/Resources/Private/Language/locallang.xlf:contact',
                 'config' => [
-                    'type' => 'select',
-                    'renderType' => 'selectSingle',
-                    'foreign_table' => 'tx_contacts_domain_model_contact',
                     'default' => 0,
-                    'minitems' => 0,
-                    'maxitems' => 1,
+                    'foreign_table' => 'tx_contacts_domain_model_contact',
                     'items' => [
                         ['', 0],
                     ],
+                    'maxitems' => 1,
+                    'minitems' => 0,
+                    'renderType' => 'selectSingle',
+                    'type' => 'select',
                 ],
+                'exclude' => false,
+                'label' => 'LLL:EXT:rmnd_contacts/Resources/Private/Language/locallang.xlf:contact',
             ],
         ]);
         return $fieldName;
@@ -46,16 +46,16 @@ class ExtensionUtility
         $fieldName = 'contacts';
         $column = [
             $fieldName => [
-                'exclude' => false,
-                'label' => 'LLL:EXT:rmnd_contacts/Resources/Private/Language/locallang.xlf:contacts',
                 'config' => [
-                    'type' => 'select',
-                    'renderType' => 'selectMultipleSideBySide',
                     'foreign_table' => 'tx_contacts_domain_model_contact',
                     'MM' => $mm,
-                    'size' => 5,
                     'multiple' => 0,
+                    'renderType' => 'selectMultipleSideBySide',
+                    'size' => 5,
+                    'type' => 'select',
                 ],
+                'exclude' => false,
+                'label' => 'LLL:EXT:rmnd_contacts/Resources/Private/Language/locallang.xlf:contacts',
             ],
         ];
 
