@@ -8,7 +8,7 @@ use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
 
 defined('TYPO3') or die;
 
-(function () {
+(function (): void {
     // Detail Plugin Configuration
     $detailSignature = ExtensionUtility::registerPlugin(
         'Contacts',

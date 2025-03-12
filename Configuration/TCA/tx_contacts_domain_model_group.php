@@ -1,56 +1,40 @@
 <?php
 
+declare(strict_types=1);
+
 return [
-    'ctrl' => [
-        'title' => 'LLL:EXT:rmnd_contacts/Resources/Private/Language/locallang_tca.xlf:contactGroup',
-        'label' => 'name',
-        'tstamp' => 'tstamp',
-        'crdate' => 'crdate',
-        'versioningWS' => true,
-        'transOrigPointerField' => 'l10n_parent',
-        'transOrigDiffSourceField' => 'l10n_diffsource',
-        'languageField' => 'sys_language_uid',
-        'translationSource' => 'l10n_source',
-        'origUid' => 't3_origuid',
-        'delete' => 'deleted',
-        'sortby' => 'sorting',
-        'enablecolumns' => [
-            'disabled' => 'hidden',
-        ],
-        'iconfile' => 'EXT:rmnd_contacts/Resources/Public/Icons/tx_contacts_domain_model_contactgroup.svg',
-    ],
     'columns' => [
-        'name' => [
-            'label' => 'LLL:EXT:rmnd_contacts/Resources/Private/Language/locallang_tca.xlf:name',
-            'config' => [
-                'type' => 'input',
-                'size' => 20,
-                'eval' => 'trim',
-                'required' => true,
-                'max' => 256,
-            ],
-        ],
-        'description' => [
-            'label' => 'LLL:EXT:rmnd_contacts/Resources/Private/Language/locallang_tca.xlf:description',
-            'config' => [
-                'type' => 'text',
-                'eval' => 'trim',
-                'enableRichtext' => true,
-                'max' => 256,
-            ],
-        ],
         'contacts' => [
-            'exclude' => 0,
-            'label' => 'LLL:EXT:rmnd_contacts/Resources/Private/Language/locallang_tca.xlf:contacts',
             'config' => [
                 'type' => 'passthrough',
             ],
+            'exclude' => 0,
+            'label' => 'LLL:EXT:rmnd_contacts/Resources/Private/Language/locallang_tca.xlf:contacts',
+        ],
+        'description' => [
+            'config' => [
+                'enableRichtext' => true,
+                'eval' => 'trim',
+                'max' => 256,
+                'type' => 'text',
+            ],
+            'label' => 'LLL:EXT:rmnd_contacts/Resources/Private/Language/locallang_tca.xlf:description',
+        ],
+        'name' => [
+            'config' => [
+                'eval' => 'trim',
+                'max' => 256,
+                'required' => true,
+                'size' => 20,
+                'type' => 'input',
+            ],
+            'label' => 'LLL:EXT:rmnd_contacts/Resources/Private/Language/locallang_tca.xlf:name',
         ],
         'slug' => [
-            'label' => 'LLL:EXT:rmnd_contacts/Resources/Private/Language/locallang_tca.xlf:slug',
-            'exclude' => 0,
             'config' => [
-                'type' => 'slug',
+                'default' => '',
+                'eval' => 'uniqueInSite',
+                'fallbackCharacter' => '-',
                 'generatorOptions' => [
                     'fields' => ['name'],
                     'prefixParentPageSlug' => false,
@@ -58,70 +42,29 @@ return [
                         '/' => '-',
                     ],
                 ],
-                'fallbackCharacter' => '-',
-                'eval' => 'uniqueInSite',
-                'default' => '',
+                'type' => 'slug',
             ],
+            'exclude' => 0,
+            'label' => 'LLL:EXT:rmnd_contacts/Resources/Private/Language/locallang_tca.xlf:slug',
         ],
-        'sys_language_uid' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.language',
-            'config' => [
-                'type' => 'language',
-            ],
+    ],
+    'ctrl' => [
+        'crdate' => 'crdate',
+        'delete' => 'deleted',
+        'enablecolumns' => [
+            'disabled' => 'hidden',
         ],
-        'l10n_parent' => [
-            'displayCond' => 'FIELD:sys_language_uid:>:0',
-            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.l18n_parent',
-            'config' => [
-                'type' => 'select',
-                'renderType' => 'selectSingle',
-                'items' => [
-                    [
-                        '',
-                        0,
-                    ],
-                ],
-                'foreign_table' => 'tx_contacts_domain_model_group',
-                'foreign_table_where' =>
-                    'AND {#tx_contacts_domain_model_group}.{#pid}=###CURRENT_PID###'
-                    . ' AND {#tx_contacts_domain_model_group}.{#sys_language_uid} IN (-1,0)',
-                'default' => 0,
-            ],
-        ],
-        'l10n_source' => [
-            'config' => [
-                'type' => 'passthrough',
-            ],
-        ],
-        'l10n_diffsource' => [
-            'config' => [
-                'type' => 'passthrough',
-                'default' => '',
-            ],
-        ],
-        't3ver_label' => [
-            'displayCond' => 'FIELD:t3ver_label:REQ:true',
-            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.versionLabel',
-            'config' => [
-                'type' => 'none',
-            ],
-        ],
-        'hidden' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.enabled',
-            'config' => [
-                'type' => 'check',
-                'renderType' => 'checkboxToggle',
-                'items' => [
-                    [
-                        0 => '',
-                        1 => '',
-                        'invertStateDisplay' => true,
-                    ],
-                ],
-            ],
-        ],
+        'iconfile' => 'EXT:rmnd_contacts/Resources/Public/Icons/tx_contacts_domain_model_contactgroup.svg',
+        'label' => 'name',
+        'languageField' => 'sys_language_uid',
+        'origUid' => 't3_origuid',
+        'sortby' => 'sorting',
+        'title' => 'LLL:EXT:rmnd_contacts/Resources/Private/Language/locallang_tca.xlf:contactGroup',
+        'translationSource' => 'l10n_source',
+        'transOrigDiffSourceField' => 'l10n_diffsource',
+        'transOrigPointerField' => 'l10n_parent',
+        'tstamp' => 'tstamp',
+        'versioningWS' => true,
     ],
     'types' => [
         0 => [

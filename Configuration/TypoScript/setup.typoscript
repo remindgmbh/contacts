@@ -23,10 +23,6 @@ vcard {
 plugin {
     tx_contacts {
         settings {
-            jsonFields {
-                Remind\Contacts\Domain\Model\Contact = salutation,firstName,lastName,middleName,displayName,email,groups,image,title,position,phone,mobile,vCardLink
-                Remind\Contacts\Domain\Model\Group = name,description
-            }
             displayNameFields = firstName,middleName,lastName
         }
     }

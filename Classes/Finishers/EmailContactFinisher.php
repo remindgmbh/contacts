@@ -6,7 +6,7 @@ namespace Remind\Contacts\Finishers;
 
 use Psr\EventDispatcher\EventDispatcherInterface;
 use Remind\Contacts\Domain\Repository\ContactRepository;
-use Remind\Extbase\Event\ModifyDetailEntityEvent;
+use Remind\Extbase\Event\ModifyDetailItemEvent;
 use TYPO3\CMS\Core\Utility\ArrayUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Form\Domain\Finishers\EmailFinisher;
@@ -16,14 +16,16 @@ class EmailContactFinisher extends EmailFinisher
 {
     /**
      * values from parent class with additional value 'recipients'
-     * @var array
+     *
+     * @phpcsSuppress SlevomatCodingStandard.TypeHints.PropertyTypeHint.MissingNativeTypeHint
+     * @var mixed[]
      */
     protected $defaultOptions = [
-        'recipientName' => '',
-        'senderName' => '',
         'addHtmlPart' => true,
         'attachUploads' => true,
+        'recipientName' => '',
         'recipients' => [],
+        'senderName' => '',
     ];
 
     private ?EventDispatcherInterface $eventDispatcher = null;
@@ -39,16 +41,22 @@ class EmailContactFinisher extends EmailFinisher
      *
      * @throws FinisherException
      */
-    protected function executeInternal()
+    protected function executeInternal(): void
     {
         $contactSource = $this->parseOption('contactSource');
 
-        if (!$contactSource) {
-            throw new FinisherException('No Contact Source defined in finisher settings overrides', 1675936768);
+        if (
+            !$contactSource ||
+            !is_string($contactSource)
+        ) {
+            throw new FinisherException(
+                'No Contact Source defined in finisher settings overrides or contact source is not of type string',
+                1675936768
+            );
         }
 
-        $arguments = $this->finisherContext->getFormRuntime()->getFormState()->getFormValue('arguments');
-        $this->finisherContext->getFormRuntime()->getFormState()->setFormValue('arguments', null);
+        $arguments = $this->finisherContext->getFormRuntime()->getFormState()?->getFormValue('arguments');
+        $this->finisherContext->getFormRuntime()->getFormState()?->setFormValue('arguments', null);
 
         $contactRepository = GeneralUtility::makeInstance(ContactRepository::class);
 
@@ -68,9 +76,9 @@ class EmailContactFinisher extends EmailFinisher
                 }
                 break;
             default:
-                /** @var ModifyDetailEntityEvent $event */
-                $event = $this->eventDispatcher->dispatch(
-                    new ModifyDetailEntityEvent('Contacts', $contactSource, $arguments)
+                /** @var ModifyDetailItemEvent $event */
+                $event = $this->eventDispatcher?->dispatch(
+                    new ModifyDetailItemEvent('Contacts', $contactSource, $arguments)
                 );
                 $contact = $event->getResult();
                 break;
@@ -93,7 +101,7 @@ class EmailContactFinisher extends EmailFinisher
 
         if ($contactRole === 'recipient') {
             $recipients = [$email => $name];
-            ArrayUtility::mergeRecursiveWithOverrule($recipients, $this->parseOption('recipients'));
+            ArrayUtility::mergeRecursiveWithOverrule($recipients, (array) $this->parseOption('recipients'));
             $this->setOption('recipients', $recipients);
         }
 

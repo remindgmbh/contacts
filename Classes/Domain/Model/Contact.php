@@ -4,16 +4,14 @@ declare(strict_types=1);
 
 namespace Remind\Contacts\Domain\Model;
 
-use Psr\Http\Message\ServerRequestInterface;
-use Remind\Extbase\Domain\Model\AbstractJsonSerializableEntity;
 use Sabre\VObject\Component\VCard;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 use TYPO3\CMS\Extbase\Domain\Model\FileReference;
-use TYPO3\CMS\Extbase\Mvc\Web\Routing\UriBuilder;
+use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
-class Contact extends AbstractJsonSerializableEntity
+class Contact extends AbstractEntity
 {
     protected string $firstName = '';
 
@@ -42,9 +40,6 @@ class Contact extends AbstractJsonSerializableEntity
      */
     protected ObjectStorage $groups;
 
-    /**
-     * @var FileReference|null
-     */
     protected ?FileReference $image = null;
 
     public function getDisplayName(): string
@@ -62,24 +57,6 @@ class Contact extends AbstractJsonSerializableEntity
             }
         }
         return implode(' ', array_filter($properties));
-    }
-
-    public function getVCardLink(): string
-    {
-        $request = $this->getRequest();
-        /** @var \TYPO3\CMS\Core\TypoScript\FrontendTypoScript $frontendTyposcript */
-        $frontendTyposcript = $request->getAttribute('frontend.typoscript');
-        $constants = $frontendTyposcript->getFlatSettings();
-
-        $pageType = (int) $constants['plugin.tx_contacts.vcard.typeNum'];
-
-        $uriBuilder = GeneralUtility::makeInstance(UriBuilder::class);
-        $uri = $uriBuilder
-            ->reset()
-            ->setTargetPageType($pageType)
-            ->setArguments(['tx_contacts_vcard[contact]' => $this->uid])
-            ->build();
-        return $uri;
     }
 
     public function getVCard(): VCard
@@ -232,12 +209,12 @@ class Contact extends AbstractJsonSerializableEntity
         return $this;
     }
 
-    public function addGroup(Group $group)
+    public function addGroup(Group $group): void
     {
         $this->groups->attach($group);
     }
 
-    public function removeGroup(Group $group)
+    public function removeGroup(Group $group): void
     {
         $this->groups->detach($group);
     }
@@ -261,7 +238,6 @@ class Contact extends AbstractJsonSerializableEntity
     }
 
     /**
-     * @return FileReference|null
      */
     public function getImage(): ?FileReference
     {
@@ -269,7 +245,6 @@ class Contact extends AbstractJsonSerializableEntity
     }
 
     /**
-     * @param FileReference $image
      */
     public function setImage(FileReference $image): self
     {
@@ -279,7 +254,6 @@ class Contact extends AbstractJsonSerializableEntity
     }
 
     /**
-     * @return string
      */
     public function getPosition(): string
     {
@@ -291,10 +265,5 @@ class Contact extends AbstractJsonSerializableEntity
         $this->position = $position;
 
         return $this;
-    }
-
-    private function getRequest(): ServerRequestInterface
-    {
-        return $GLOBALS['TYPO3_REQUEST'];
     }
 }

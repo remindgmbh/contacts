@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Remind\Contacts\Hooks;
 
 use Remind\Contacts\Finishers\EmailContactFinisher;
-use TYPO3\CMS\Form\Domain\Finishers\AbstractFinisher;
+use TYPO3\CMS\Form\Domain\Finishers\FinisherInterface;
 use TYPO3\CMS\Form\Domain\Model\FormElements\Page;
 use TYPO3\CMS\Form\Domain\Runtime\FormRuntime;
 
@@ -15,6 +15,9 @@ class FormHook
      * Add query parameters to form state to be used in EmailContactFinisher
      * has to be done before submitting because in after submit hook or
      * finisher only tx_form_formframework are available
+     *
+     * @phpcsSuppress SlevomatCodingStandard.Functions.UnusedParameter
+     * @param mixed[] $args
      */
     public function afterInitializeCurrentPage(
         FormRuntime $formRuntime,
@@ -24,7 +27,7 @@ class FormHook
     ): ?Page {
         if ($page) {
             $containsEmailContactFinisher = !empty(
-                array_filter($formRuntime->getFormDefinition()->getFinishers(), function (AbstractFinisher $finisher) {
+                array_filter($formRuntime->getFormDefinition()->getFinishers(), function (FinisherInterface $finisher): bool {
                     return $finisher instanceof EmailContactFinisher;
                 })
             );
@@ -34,7 +37,7 @@ class FormHook
                 $pageArguments = $formRuntime->getRequest()->getAttribute('routing');
                 $arguments = $pageArguments->getArguments();
                 unset($arguments['cHash']);
-                $formRuntime->getFormState()->setFormValue('arguments', $arguments);
+                $formRuntime->getFormState()?->setFormValue('arguments', $arguments);
             }
         }
         return $page;

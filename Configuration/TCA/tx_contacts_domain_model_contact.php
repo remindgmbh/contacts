@@ -1,123 +1,128 @@
 <?php
 
+declare(strict_types=1);
+
 return [
-    'ctrl' => [
-        'title' => 'LLL:EXT:rmnd_contacts/Resources/Private/Language/locallang_tca.xlf:contact',
-        'label' => 'last_name',
-        'label_alt' => 'first_name',
-        'label_alt_force' => true,
-        'tstamp' => 'tstamp',
-        'crdate' => 'crdate',
-        'versioningWS' => true,
-        'transOrigPointerField' => 'l10n_parent',
-        'transOrigDiffSourceField' => 'l10n_diffsource',
-        'languageField' => 'sys_language_uid',
-        'translationSource' => 'l10n_source',
-        'origUid' => 't3_origuid',
-        'delete' => 'deleted',
-        'sortby' => 'sorting',
-        'enablecolumns' => [
-            'disabled' => 'hidden',
-        ],
-        'iconfile' => 'EXT:rmnd_contacts/Resources/Public/Icons/tx_contacts_domain_model_contact.svg',
-    ],
     'columns' => [
-        'title' => [
-            'label' => 'LLL:EXT:rmnd_contacts/Resources/Private/Language/locallang_tca.xlf:title',
+        'email' => [
             'config' => [
-                'type' => 'input',
-                'size' => 10,
                 'eval' => 'trim',
-                'required' => false,
                 'max' => 256,
+                'required' => true,
+                'size' => 30,
+                'type' => 'input',
             ],
-        ],
-        'salutation' => [
-            'label' => 'LLL:EXT:rmnd_contacts/Resources/Private/Language/locallang_tca.xlf:salutation',
-            'config' => [
-                'type' => 'select',
-                'renderType' => 'selectSingle',
-                'items' => [
-                    [
-                        'LLL:EXT:rmnd_contacts/Resources/Private/Language/locallang_tca.xlf:salutation.none',
-                        0,
-                    ],
-                    [
-                        'LLL:EXT:rmnd_contacts/Resources/Private/Language/locallang_tca.xlf:salutation.mr',
-                        1,
-                    ],
-                    [
-                        'LLL:EXT:rmnd_contacts/Resources/Private/Language/locallang_tca.xlf:salutation.mrs',
-                        2,
-                    ],
-                ],
-            ],
+            'label' => 'LLL:EXT:rmnd_contacts/Resources/Private/Language/locallang_tca.xlf:email',
         ],
         'first_name' => [
+            'config' => [
+                'eval' => 'trim',
+                'max' => 256,
+                'required' => false,
+                'size' => 30,
+                'type' => 'input',
+            ],
             'label' => 'LLL:EXT:rmnd_contacts/Resources/Private/Language/locallang_tca.xlf:firstName',
-            'config' => [
-                'type' => 'input',
-                'size' => 30,
-                'eval' => 'trim',
-                'required' => false,
-                'max' => 256,
-            ],
         ],
-        'middle_name' => [
-            'label' => 'LLL:EXT:rmnd_contacts/Resources/Private/Language/locallang_tca.xlf:middleName',
+        'groups' => [
             'config' => [
-                'type' => 'input',
-                'size' => 30,
-                'eval' => 'trim',
-                'required' => false,
-                'max' => 256,
+                'foreign_table' => 'tx_contacts_domain_model_group',
+                'foreign_table_where' => 'AND {#tx_contacts_domain_model_group}.{#sys_language_uid} IN (-1,0)',
+                'MM' => 'tx_contacts_domain_model_contact_group_mm',
+                'multiple' => 0,
+                'renderType' => 'selectMultipleSideBySide',
+                'size' => 5,
+                'type' => 'select',
             ],
+            'exclude' => 0,
+            'l10n_display' => 'defaultAsReadonly',
+            'l10n_mode' => 'exclude',
+            'label' => 'LLL:EXT:rmnd_contacts/Resources/Private/Language/locallang_tca.xlf:contactGroups',
+        ],
+        'image' => [
+            'config' => [
+                'allowed' => 'common-image-types',
+                'maxitems' => 1,
+                'type' => 'file',
+            ],
+            'label' => 'LLL:EXT:rmnd_contacts/Resources/Private/Language/locallang_tca.xlf:image',
         ],
         'last_name' => [
+            'config' => [
+                'eval' => 'trim',
+                'max' => 256,
+                'required' => true,
+                'size' => 30,
+                'type' => 'input',
+            ],
             'label' => 'LLL:EXT:rmnd_contacts/Resources/Private/Language/locallang_tca.xlf:lastName',
-            'config' => [
-                'type' => 'input',
-                'size' => 30,
-                'eval' => 'trim',
-                'required' => true,
-                'max' => 256,
-            ],
         ],
-        'email' => [
-            'label' => 'LLL:EXT:rmnd_contacts/Resources/Private/Language/locallang_tca.xlf:email',
+        'middle_name' => [
             'config' => [
-                'type' => 'input',
-                'size' => 30,
                 'eval' => 'trim',
-                'required' => true,
                 'max' => 256,
-            ],
-        ],
-        'phone' => [
-            'label' => 'LLL:EXT:rmnd_contacts/Resources/Private/Language/locallang_tca.xlf:phone',
-            'config' => [
-                'type' => 'input',
-                'size' => 30,
-                'eval' => 'trim',
                 'required' => false,
-                'max' => 256,
+                'size' => 30,
+                'type' => 'input',
             ],
+            'label' => 'LLL:EXT:rmnd_contacts/Resources/Private/Language/locallang_tca.xlf:middleName',
         ],
         'mobile' => [
-            'label' => 'LLL:EXT:rmnd_contacts/Resources/Private/Language/locallang_tca.xlf:mobile',
             'config' => [
-                'type' => 'input',
-                'size' => 30,
                 'eval' => 'trim',
-                'required' => false,
                 'max' => 256,
+                'required' => false,
+                'size' => 30,
+                'type' => 'input',
             ],
+            'label' => 'LLL:EXT:rmnd_contacts/Resources/Private/Language/locallang_tca.xlf:mobile',
+        ],
+        'phone' => [
+            'config' => [
+                'eval' => 'trim',
+                'max' => 256,
+                'required' => false,
+                'size' => 30,
+                'type' => 'input',
+            ],
+            'label' => 'LLL:EXT:rmnd_contacts/Resources/Private/Language/locallang_tca.xlf:phone',
+        ],
+        'position' => [
+            'config' => [
+                'eval' => 'trim',
+                'max' => 256,
+                'required' => false,
+                'size' => 30,
+                'type' => 'input',
+            ],
+            'label' => 'LLL:EXT:rmnd_contacts/Resources/Private/Language/locallang_tca.xlf:position',
+        ],
+        'salutation' => [
+            'config' => [
+                'items' => [
+                    [
+                        'label' => 'LLL:EXT:rmnd_contacts/Resources/Private/Language/locallang_tca.xlf:salutation.none',
+                        'value' => 0,
+                    ],
+                    [
+                        'label' => 'LLL:EXT:rmnd_contacts/Resources/Private/Language/locallang_tca.xlf:salutation.mr',
+                        'value' => 1,
+                    ],
+                    [
+                        'label' => 'LLL:EXT:rmnd_contacts/Resources/Private/Language/locallang_tca.xlf:salutation.mrs',
+                        'value' => 2,
+                    ],
+                ],
+                'renderType' => 'selectSingle',
+                'type' => 'select',
+            ],
+            'label' => 'LLL:EXT:rmnd_contacts/Resources/Private/Language/locallang_tca.xlf:salutation',
         ],
         'slug' => [
-            'label' => 'LLL:EXT:rmnd_contacts/Resources/Private/Language/locallang_tca.xlf:slug',
-            'exclude' => 0,
             'config' => [
-                'type' => 'slug',
+                'default' => '',
+                'eval' => 'uniqueInSite',
+                'fallbackCharacter' => '-',
                 'generatorOptions' => [
                     'fields' => ['first_name', 'last_name'],
                     'fieldSeparator' => '-',
@@ -126,119 +131,43 @@ return [
                         '/' => '-',
                     ],
                 ],
-                'fallbackCharacter' => '-',
-                'eval' => 'uniqueInSite',
-                'default' => '',
+                'type' => 'slug',
             ],
-        ],
-        'groups' => [
             'exclude' => 0,
-            'label' => 'LLL:EXT:rmnd_contacts/Resources/Private/Language/locallang_tca.xlf:contactGroups',
-            'l10n_mode' => 'exclude',
-            'l10n_display' => 'defaultAsReadonly',
-            'config' => [
-                'type' => 'select',
-                'renderType' => 'selectMultipleSideBySide',
-                'foreign_table' => 'tx_contacts_domain_model_group',
-                'foreign_table_where' => 'AND {#tx_contacts_domain_model_group}.{#sys_language_uid} IN (-1,0)',
-                'MM' => 'tx_contacts_domain_model_contact_group_mm',
-                'size' => 5,
-                'multiple' => 0,
-            ],
+            'label' => 'LLL:EXT:rmnd_contacts/Resources/Private/Language/locallang_tca.xlf:slug',
         ],
-        'image' => [
-            'label' => 'LLL:EXT:rmnd_contacts/Resources/Private/Language/locallang_tca.xlf:image',
+        'title' => [
             'config' => [
-                'type' => 'file',
-                'allowed' => 'common-image-types',
-                'maxitems' => 1,
-            ],
-        ],
-        'position' => [
-            'label' => 'LLL:EXT:rmnd_contacts/Resources/Private/Language/locallang_tca.xlf:position',
-            'config' => [
-                'type' => 'input',
-                'size' => 30,
                 'eval' => 'trim',
-                'required' => false,
                 'max' => 256,
+                'required' => false,
+                'size' => 10,
+                'type' => 'input',
             ],
-        ],
-        'sys_language_uid' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.language',
-            'config' => [
-                'type' => 'language',
-            ],
-        ],
-        'l10n_parent' => [
-            'displayCond' => 'FIELD:sys_language_uid:>:0',
-            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.l18n_parent',
-            'config' => [
-                'type' => 'select',
-                'renderType' => 'selectSingle',
-                'items' => [
-                    [
-                        '',
-                        0,
-                    ],
-                ],
-                'foreign_table' => 'tx_contacts_domain_model_contact',
-                'foreign_table_where' =>
-                    'AND {#tx_contacts_domain_model_contact}.{#pid}=###CURRENT_PID###'
-                    . ' AND {#tx_contacts_domain_model_contact}.{#sys_language_uid} IN (-1,0)',
-                'default' => 0,
-            ],
-        ],
-        'l10n_source' => [
-            'config' => [
-                'type' => 'passthrough',
-            ],
-        ],
-        'l10n_diffsource' => [
-            'config' => [
-                'type' => 'passthrough',
-                'default' => '',
-            ],
-        ],
-        't3ver_label' => [
-            'displayCond' => 'FIELD:t3ver_label:REQ:true',
-            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.versionLabel',
-            'config' => [
-                'type' => 'none',
-            ],
-        ],
-        'hidden' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.enabled',
-            'config' => [
-                'type' => 'check',
-                'renderType' => 'checkboxToggle',
-                'items' => [
-                    [
-                        0 => '',
-                        1 => '',
-                        'invertStateDisplay' => true,
-                    ],
-                ],
-            ],
+            'label' => 'LLL:EXT:rmnd_contacts/Resources/Private/Language/locallang_tca.xlf:title',
         ],
     ],
-    'palettes' => [
-        'name' => [
-            'label' => 'LLL:EXT:rmnd_contacts/Resources/Private/Language/locallang_tca.xlf:name',
-            'showitem' => '
-                salutation,
-                --linebreak--,
-                title,
-                --linebreak--,
-                first_name,
-                --linebreak--,
-                middle_name,
-                --linebreak--,
-                last_name,
-            ',
+    'ctrl' => [
+        'crdate' => 'crdate',
+        'delete' => 'deleted',
+        'enablecolumns' => [
+            'disabled' => 'hidden',
         ],
+        'iconfile' => 'EXT:rmnd_contacts/Resources/Public/Icons/tx_contacts_domain_model_contact.svg',
+        'label' => 'last_name',
+        'label_alt' => 'first_name',
+        'label_alt_force' => true,
+        'languageField' => 'sys_language_uid',
+        'origUid' => 't3_origuid',
+        'sortby' => 'sorting',
+        'title' => 'LLL:EXT:rmnd_contacts/Resources/Private/Language/locallang_tca.xlf:contact',
+        'translationSource' => 'l10n_source',
+        'transOrigDiffSourceField' => 'l10n_diffsource',
+        'transOrigPointerField' => 'l10n_parent',
+        'tstamp' => 'tstamp',
+        'versioningWS' => true,
+    ],
+    'palettes' => [
         'communication' => [
             'showitem' => '
                 email,
@@ -251,6 +180,20 @@ return [
         'company' => [
             'showitem' => '
                 position,
+            ',
+        ],
+        'name' => [
+            'label' => 'LLL:EXT:rmnd_contacts/Resources/Private/Language/locallang_tca.xlf:name',
+            'showitem' => '
+                salutation,
+                --linebreak--,
+                title,
+                --linebreak--,
+                first_name,
+                --linebreak--,
+                middle_name,
+                --linebreak--,
+                last_name,
             ',
         ],
     ],
