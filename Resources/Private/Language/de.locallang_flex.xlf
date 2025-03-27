@@ -4,7 +4,7 @@
         <header/>
         <body>
             <trans-unit id="config.sheet_title">
-                <target>Konakte</target>
+                <target>Kontakte</target>
             </trans-unit>
             <trans-unit id="config.detail_page">
                 <target>Detail Seite</target>
