@@ -16,7 +16,7 @@ class Group extends AbstractJsonSerializableEntity
     /**
      * @var ObjectStorage<Contact> $contacts
      */
-    protected ObjectStorage $contacts;
+    protected ?ObjectStorage $contacts = null;
 
     public function getName(): string
     {
@@ -55,7 +55,7 @@ class Group extends AbstractJsonSerializableEntity
     /**
      * @return ObjectStorage<Contact>
      */
-    public function getContacts(): ObjectStorage
+    public function getContacts(): ?ObjectStorage
     {
         return $this->contacts;
     }
