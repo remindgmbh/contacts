@@ -15,6 +15,7 @@ return [
         'translationSource' => 'l10n_source',
         'origUid' => 't3_origuid',
         'delete' => 'deleted',
+        'searchFields' => 'last_name,first_name',
         'sortby' => 'sorting',
         'enablecolumns' => [
             'disabled' => 'hidden',

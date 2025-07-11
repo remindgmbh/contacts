@@ -13,6 +13,7 @@ return [
         'translationSource' => 'l10n_source',
         'origUid' => 't3_origuid',
         'delete' => 'deleted',
+        'searchFields' => 'name',
         'sortby' => 'sorting',
         'enablecolumns' => [
             'disabled' => 'hidden',
