@@ -18,6 +18,11 @@ class Group extends AbstractEntity
      */
     protected ?ObjectStorage $contacts = null;
 
+    public function initializeObject(): void
+    {
+        $this->contacts ??= new ObjectStorage();
+    }
+
     public function getName(): string
     {
         return $this->name;
