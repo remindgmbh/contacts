@@ -49,12 +49,12 @@ class Group extends AbstractEntity
 
     public function addContact(Contact $contact): void
     {
-        $this->contacts->attach($contact);
+        $this->contacts?->attach($contact);
     }
 
     public function removeContact(Contact $contact): void
     {
-        $this->contacts->detach($contact);
+        $this->contacts?->detach($contact);
     }
 
     /**
