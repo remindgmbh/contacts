@@ -47,7 +47,8 @@
         "php": "^8",
         "sabre/vobject": "^4.5",
         "typo3/cms-core": "^13.4",
-        "typo3/cms-form": "^13.4"
+        "typo3/cms-form": "^13.4",
+        "typo3/cms-seo": "^13.4"
     },
     "require-dev": {
         "phpstan/extension-installer": "^1.4",
